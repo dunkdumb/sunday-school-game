@@ -1,0 +1,727 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Spiritual Life - Sunday School</title>
+
+<style>
+
+/* -------------------- BASIC RESET -------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #dcdcdc;
+    min-height: 100vh;
+    padding: 25px;
+}
+
+
+/* -------------------- WHITE BOARD -------------------- */
+
+.whiteboard {
+    max-width: 1250px;
+    margin: auto;
+
+    background: white;
+
+    min-height: 700px;
+
+    padding: 30px;
+
+    border: 12px solid #777;
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.30);
+}
+
+
+/* -------------------- TITLE -------------------- */
+
+h1 {
+    text-align: center;
+
+    color: #333;
+
+    font-size: 32px;
+
+    margin-bottom: 30px;
+}
+
+.title-icon {
+    color: #36a852;
+}
+
+
+/* -------------------- STICKY NOTE AREA -------------------- */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 22px;
+
+}
+
+
+/* -------------------- STICKY NOTES -------------------- */
+
+.card {
+
+    height: 145px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 65px;
+
+    box-shadow:
+        4px 6px 10px rgba(0,0,0,0.20);
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+
+}
+
+
+/* -------------------- HOVER EFFECT -------------------- */
+
+.card:hover {
+
+    transform:
+        scale(1.08)
+        rotate(2deg);
+
+    box-shadow:
+        8px 12px 20px rgba(0,0,0,0.30);
+
+}
+
+
+/* -------------------- CARD COLORS -------------------- */
+
+.yellow {
+    background: #fff176;
+}
+
+.pink {
+    background: #ffb6c9;
+}
+
+.blue {
+    background: #9edcff;
+}
+
+.green {
+    background: #b9f6ca;
+}
+
+.orange {
+    background: #ffcc80;
+}
+
+.purple {
+    background: #d7b5ff;
+}
+
+.cyan {
+    background: #a7f3f0;
+}
+
+.red {
+    background: #ffaaa5;
+}
+
+
+/* -------------------- POPUP BACKGROUND -------------------- */
+
+.popup {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.70);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+
+}
+
+
+/* -------------------- QUESTION BOX -------------------- */
+
+.message-box {
+
+    background: white;
+
+    width: 90%;
+
+    max-width: 750px;
+
+    min-height: 420px;
+
+    padding: 45px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.40);
+
+    animation:
+        pop 0.4s ease;
+
+}
+
+
+/* -------------------- POPUP ANIMATION -------------------- */
+
+@keyframes pop {
+
+    from {
+
+        transform:
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* -------------------- BIG SMILEY -------------------- */
+
+.big-smiley {
+
+    font-size: 90px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* -------------------- QUESTION NUMBER -------------------- */
+
+.question-number {
+
+    font-size: 23px;
+
+    color: #36a852;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* -------------------- QUESTION -------------------- */
+
+.question {
+
+    font-size: 32px;
+
+    line-height: 1.4;
+
+    color: #333;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* -------------------- CLOSE BUTTON -------------------- */
+
+.close {
+
+    background: #36a852;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 30px;
+
+    padding:
+        14px 35px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.close:hover {
+
+    background: #218838;
+
+    transform:
+        scale(1.05);
+
+}
+
+
+/* -------------------- TABLET -------------------- */
+
+@media (max-width: 1000px) {
+
+    .cards {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+    }
+
+}
+
+
+/* -------------------- MOBILE -------------------- */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .whiteboard {
+
+        padding: 20px;
+
+        border-width: 8px;
+
+    }
+
+    h1 {
+
+        font-size: 24px;
+
+    }
+
+    .cards {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 15px;
+
+    }
+
+    .card {
+
+        height: 120px;
+
+        font-size: 55px;
+
+    }
+
+    .question {
+
+        font-size: 24px;
+
+    }
+
+}
+
+
+/* -------------------- SMALL MOBILE -------------------- */
+
+@media (max-width: 450px) {
+
+    .cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .card {
+
+        height: 120px;
+
+    }
+
+    .message-box {
+
+        padding: 30px 20px;
+
+    }
+
+    .big-smiley {
+
+        font-size: 70px;
+
+    }
+
+    .question {
+
+        font-size: 21px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+                    WHITE BOARD
+================================================== -->
+
+<div class="whiteboard">
+
+
+    <h1>
+        🌱
+        <span class="title-icon">
+            20 Questions for Children
+        </span>
+        – My Spiritual Life
+    </h1>
+
+
+    <!-- ==================================================
+                         CARDS
+    ================================================== -->
+
+    <div class="cards">
+
+
+        <div class="card yellow"
+             onclick="showQuestion(1)">
+            😊
+        </div>
+
+
+        <div class="card pink"
+             onclick="showQuestion(2)">
+            😇
+        </div>
+
+
+        <div class="card blue"
+             onclick="showQuestion(3)">
+            🙏
+        </div>
+
+
+        <div class="card green"
+             onclick="showQuestion(4)">
+            😊
+        </div>
+
+
+        <div class="card orange"
+             onclick="showQuestion(5)">
+            🌟
+        </div>
+
+
+        <div class="card purple"
+             onclick="showQuestion(6)">
+            😊
+        </div>
+
+
+        <div class="card cyan"
+             onclick="showQuestion(7)">
+            ❤️
+        </div>
+
+
+        <div class="card red"
+             onclick="showQuestion(8)">
+            😇
+        </div>
+
+
+        <div class="card yellow"
+             onclick="showQuestion(9)">
+            😊
+        </div>
+
+
+        <div class="card pink"
+             onclick="showQuestion(10)">
+            💕
+        </div>
+
+
+        <div class="card blue"
+             onclick="showQuestion(11)">
+            🎵
+        </div>
+
+
+        <div class="card green"
+             onclick="showQuestion(12)">
+            🙏
+        </div>
+
+
+        <div class="card orange"
+             onclick="showQuestion(13)">
+            📖
+        </div>
+
+
+        <div class="card purple"
+             onclick="showQuestion(14)">
+            ❤️
+        </div>
+
+
+        <div class="card cyan"
+             onclick="showQuestion(15)">
+            🌟
+        </div>
+
+
+        <div class="card red"
+             onclick="showQuestion(16)">
+            😊
+        </div>
+
+
+        <div class="card yellow"
+             onclick="showQuestion(17)">
+            😄
+        </div>
+
+
+        <div class="card pink"
+             onclick="showQuestion(18)">
+            📖
+        </div>
+
+
+        <div class="card blue"
+             onclick="showQuestion(19)">
+            💕
+        </div>
+
+
+        <div class="card green"
+             onclick="showQuestion(20)">
+            😊
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+                    QUESTION POPUP
+================================================== -->
+
+<div class="popup" id="popup">
+
+
+    <div class="message-box">
+
+
+        <div class="big-smiley">
+            😊
+        </div>
+
+
+        <div
+            class="question-number"
+            id="questionNumber">
+        </div>
+
+
+        <div
+            class="question"
+            id="questionText">
+        </div>
+
+
+        <button
+            class="close"
+            onclick="closeQuestion()">
+
+            Back to Cards ✨
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+                    JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+const questions = [
+
+    "Who is Jesus to you? ❤️",
+
+    "How do you talk to Jesus?",
+
+    "When do you pray? 🙏",
+
+    "What is your favourite Bible verse? 📖",
+
+    "What Bible story do you like the most? Why?",
+
+    "What do you do when you are afraid?",
+
+    "Do you thank Jesus every day? What do you thank Him for?",
+
+    "What do you do when you do something wrong?",
+
+    "How can you show love to your parents? ❤️",
+
+    "How can you show Jesus' love to your friends?",
+
+    "What is your favourite Christian song? 🎵",
+
+    "What do you do when you are tempted to do something wrong?",
+
+    "Do you read the Bible at home? When?",
+
+    "What is one thing you want Jesus to help you change in your life?",
+
+    "What is one thing you want to do for Jesus this week? 🌟",
+
+    "What do you like most about Jesus? ❤️",
+
+    "What makes you happy when you come to Sunday School? 😊",
+
+    "What is one Bible story that teaches you to trust God? 📖",
+
+    "If Jesus were sitting beside you, what would you like to tell Him? 💕",
+
+    "What is one thing you have learned in Sunday School? 📖❤️"
+
+];
+
+
+
+/* -------------------- SHOW QUESTION -------------------- */
+
+function showQuestion(number) {
+
+    document.getElementById("questionNumber").innerText =
+        "Question " + number;
+
+
+    document.getElementById("questionText").innerText =
+        questions[number - 1];
+
+
+    document.getElementById("popup").style.display =
+        "flex";
+
+}
+
+
+
+/* -------------------- CLOSE QUESTION -------------------- */
+
+function closeQuestion() {
+
+    document.getElementById("popup").style.display =
+        "none";
+
+}
+
+
+
+/* -------------------- CLICK OUTSIDE -------------------- */
+
+document.getElementById("popup").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+
+            closeQuestion();
+
+        }
+
+    }
+);
+
+
+
+/* -------------------- ESC KEY -------------------- */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeQuestion();
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+</html>
+```
